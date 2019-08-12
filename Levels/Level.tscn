@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Levels/Level.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Enemy/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/Pickup/Pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://tmp.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://TileSets/TileSetMaker.tres" type="TileSet" id=6]
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=7]
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 1 )
+Enemy = ExtResource( 2 )
+Pickup = ExtResource( 3 )
+
+[node name="tmp" parent="." instance=ExtResource( 4 )]
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+
+[node name="Ground" type="TileMap" parent="."]
+modulate = Color( 0.266667, 0.266667, 0.266667, 1 )
+tile_set = ExtResource( 6 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Walls" type="TileMap" parent="."]
+modulate = Color( 0.266667, 0.266667, 0.266667, 1 )
+collision_mask = 6
+format = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Items" type="TileMap" parent="."]
+modulate = Color( 0.266667, 0.266667, 0.266667, 1 )
+collision_layer = 8
+collision_mask = 2
+format = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
